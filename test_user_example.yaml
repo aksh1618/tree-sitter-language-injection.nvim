@@ -1,0 +1,19 @@
+apiVersion: v1
+# highlighted
+# sql
+test-sql: |
+  select * from test;
+metadata:
+  # not highlighted
+  # sql
+  test-sql: |
+    select * from test;
+# not highlighted
+# sql
+test-sql-1: |
+  select * from test;
+data:
+  # not highlighted
+  # sql
+  test-sql: |
+    select * from test;

@@ -1,0 +1,55 @@
+# Test file for YAML language injection
+
+# Example 1: Inline SQL annotation
+query1: |
+  # sql
+  SELECT * FROM users
+  WHERE active = 1
+  ORDER BY created_at DESC
+
+# Example 2: Above-line SQL annotation
+# sql
+query2: |
+  SELECT id, name, email
+  FROM customers
+  WHERE country = 'US'
+
+# Example 3: Inline JavaScript annotation
+script: |
+  # javascript
+  function greet(name) {
+    console.log(`Hello, ${name}!`);
+  }
+  greet('World');
+
+# Example 4: Above-line Python annotation
+# python
+code: |
+  def calculate_sum(numbers):
+      return sum(numbers)
+
+  result = calculate_sum([1, 2, 3, 4, 5])
+  print(f"Sum: {result}")
+
+# Example 5: Inline HTML annotation
+template: |
+  # html
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>Test Page</title>
+    </head>
+    <body>
+      <h1>Hello World</h1>
+    </body>
+  </html>
+
+# Example 6: Above-line CSS annotation
+# css
+styles: |
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+  }

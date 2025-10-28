@@ -174,6 +174,45 @@ local templates = {
         ]],
 		},
 	},
+	yaml = {
+		string = {
+			langs = {
+				{ name = "sql", match = "^(\r\n|\r|\n)*-{2,}( )*{lang}" },
+				{ name = "javascript", match = "^(\r\n|\r|\n)*/{2,}( )*{lang}" },
+				{ name = "typescript", match = "^(\r\n|\r|\n)//+( )*{lang}" },
+				{ name = "html", match = "^(\r\n|\r|\n)\\<\\!-{2,}( )*{lang}( )*-{2,}\\>" },
+				{ name = "css", match = "^(\r\n|\r|\n)/\\*+( )*{lang}( )*\\*+/" },
+				{ name = "python", match = "^(\r\n|\r|\n)*#+( )*{lang}" },
+			},
+			query = [[
+; query
+;; string {name} injection
+((block_scalar) @injection.content
+                (#match? @injection.content "{match}")
+                (#set! injection.language "{name}"))
+        ]],
+		},
+		comment = {
+			langs = {
+				{ name = "sql", match = "^#+( )*{lang}( )*" },
+				{ name = "javascript", match = "^#+( )*{lang}( )*" },
+				{ name = "typescript", match = "^#+( )*{lang}( )*" },
+				{ name = "html", match = "^#+( )*{lang}( )*" },
+				{ name = "css", match = "^#+( )*{lang}( )*" },
+				{ name = "python", match = "^#+( )*{lang}( )*" },
+			},
+			query = [[
+; query
+;; comment {name} injection
+((comment) @comment .
+ (block_mapping_pair
+   value: (block_node
+            (block_scalar) @injection.content))
+ (#match? @comment "{match}")
+ (#set! injection.language "{name}"))
+        ]],
+		},
+	},
 }
 
 -- Function to merge two tables recursively

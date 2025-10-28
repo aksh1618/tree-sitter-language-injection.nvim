@@ -203,33 +203,12 @@ local templates = {
 			},
 			query = [[
 ; query
-;; comment {name} injection - block_node > block_scalar
-(block_mapping
- (comment) @_comment
+;; comment {name} injection
+((comment) @_comment
  .
  (block_mapping_pair
    value: (block_node
             (block_scalar) @injection.content))
- (#match? @_comment "{match}")
- (#set! injection.language "{name}"))
-
-;; comment {name} injection - direct block_scalar
-(block_mapping
- (comment) @_comment
- .
- (block_mapping_pair
-   value: (block_scalar) @injection.content)
- (#match? @_comment "{match}")
- (#set! injection.language "{name}"))
-
-;; comment {name} injection - flow_node
-(block_mapping
- (comment) @_comment
- .
- (block_mapping_pair
-   value: (flow_node
-            (plain_scalar
-              (string_scalar) @injection.content)))
  (#match? @_comment "{match}")
  (#set! injection.language "{name}"))
         ]],

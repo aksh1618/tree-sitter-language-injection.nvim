@@ -1,0 +1,23 @@
+apiVersion: v1
+
+# Root level comment followed by pair
+# sql
+test-sql: |
+  select * from test;
+
+# Nested under metadata
+metadata:
+  # sql
+  test-sql: |
+    select * from test;
+
+# Another root level
+# sql
+test-sql-2: |
+  select * from test2;
+
+# Nested under data
+data:
+  # sql
+  query: |
+    select id, name from users;

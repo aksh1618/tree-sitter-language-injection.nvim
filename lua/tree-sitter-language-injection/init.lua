@@ -203,7 +203,7 @@ local templates = {
 			},
 			query = [[
 ; query
-;; comment {name} injection - with block_node
+;; comment {name} injection - pattern 1: comment sibling of block_mapping_pair
 (
  (comment) @_comment
  .
@@ -213,12 +213,14 @@ local templates = {
  (#match? @_comment "{match}")
  (#set! injection.language "{name}"))
 
-;; comment {name} injection - without block_node
-(
+;; comment {name} injection - pattern 2: nested block_mapping
+(block_mapping_pair
  (comment) @_comment
- .
- (block_mapping_pair
-   value: (block_scalar) @injection.content)
+ (block_node
+   (block_mapping
+     (block_mapping_pair
+       value: (block_node
+                (block_scalar) @injection.content))))
  (#match? @_comment "{match}")
  (#set! injection.language "{name}"))
         ]],

@@ -55,7 +55,7 @@ _Neovim plugin for inline language injection and syntax highlighting using Tree-
 - **Inline comment annotation**: Add a comment at the start of a string with the language name to enable syntax highlighting for the embedded code.
 - **Above-line comment annotation**: Place a comment above a string/variable with the language name to trigger the injection.
 - **Configurable injections**: Easily extend or override language injections using Lua tables and custom Tree-sitter queries.
-- **Built-in support**: Out-of-the-box support for Python, Rust, JavaScript, and TypeScript, including common web and data languages.
+- **Built-in support**: Out-of-the-box support for Python, Rust, JavaScript, TypeScript, and YAML, including common web and data languages.
 
 ---
 
@@ -178,6 +178,7 @@ require("tree-sitter-language-injection").setup()
 | Rust          |       ✅       |      ✅       | SQL, JS, TS, HTML, CSS, Python |
 | JavaScript    |       ✅       |      ✅       | SQL, JS, TS, HTML, CSS, Python |
 | TypeScript    |       ✅       |      ✅       | SQL, JS, TS, HTML, CSS, Python |
+| YAML          |       ✅       |      ✅       | SQL, JS, TS, HTML, CSS, Python |
 
 ---
 
